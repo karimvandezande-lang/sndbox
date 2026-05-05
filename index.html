@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0065)file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_5.html -->
+<!-- saved from url=(0077)file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_6.html#sound-light -->
 <html lang="nl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -91,6 +91,33 @@
   }
 
   .nav-cta:hover { background: var(--dark2); }
+
+  /* Mobiele hamburger knop */
+  .nav-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-left: auto;
+  }
+  .nav-toggle-bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--dark);
+    margin: 5px 0;
+    transition: transform 0.25s, opacity 0.2s;
+  }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
 
   /* HERO */
   .hero {
@@ -798,8 +825,21 @@
 
   /* MOBILE */
   @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
+    nav { padding: 1rem 1.5rem; flex-wrap: wrap; }
+    .nav-toggle { display: block; }
+    .nav-cta { display: none !important; }
+    .nav-links {
+      display: none;
+      flex-basis: 100%;
+      flex-direction: column;
+      gap: 1.25rem;
+      padding: 1.25rem 0 0.5rem;
+      margin-top: 0.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .nav-links.is-open { display: flex; }
+    .nav-links li { width: 100%; }
+    .nav-links a { font-size: 1.2rem; }
     section { padding: 5rem 1.5rem; }
     .hero { padding: 6rem 1.5rem 3rem; }
     .about-grid, .contact-grid, .sl-layout { grid-template-columns: 1fr; gap: 2rem; }
@@ -932,8 +972,12 @@
   .lang-flag { font-size: 1rem; line-height: 1; }
 
   /* Push nav down to make room for lang bar */
-  nav { top: 32px; }
+  nav { top: 38px; }
   .hero { padding-top: 8rem; }
+
+  /* Smooth scroll voor anchor links, met offset voor de fixed nav */
+  html { scroll-behavior: smooth; }
+  section[id] { scroll-margin-top: 130px; }
 
   [data-lang] { display: none; }
   [data-lang].lang-active { display: block; }
@@ -955,15 +999,20 @@
 
 <!-- NAV -->
 <nav>
-  <a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_5.html#home" class="nav-logo">SNDBOX</a>
-  <ul class="nav-links">
-    <li><a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_5.html#about" data-lang="nl" class="lang-active" style="display: flex;">Over</a><a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_5.html#about" data-lang="en" class="" style="display: none;">About</a></li>
-    <li><a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_5.html#services" data-lang="nl" class="lang-active" style="display: flex;">Sfeer</a><a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_5.html#services" data-lang="en" class="" style="display: none;">Vibe</a></li>
-    <li><a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_5.html#sound-light">Sound &amp; Light</a></li>
-    <li><a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_5.html#contact">Contact</a></li>
+  <a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_6.html#home" class="nav-logo">SNDBOX</a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+  </button>
+  <ul class="nav-links" id="nav-menu">
+    <li><a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_6.html#about" data-lang="nl" class="lang-active" style="display: flex;">Over</a><a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_6.html#about" data-lang="en" class="" style="display: none;">About</a></li>
+    <li><a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_6.html#services" data-lang="nl" class="lang-active" style="display: flex;">Sfeer</a><a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_6.html#services" data-lang="en" class="" style="display: none;">Vibe</a></li>
+    <li><a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_6.html#sound-light">Sound &amp; Light</a></li>
+    <li><a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_6.html#contact">Contact</a></li>
   </ul>
-  <a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_5.html#contact" class="nav-cta lang-active" data-lang="nl" style="display: flex;">Neem contact op</a>
-  <a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_5.html#contact" class="nav-cta" data-lang="en" style="display: none;">Get in touch</a>
+  <a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_6.html#contact" class="nav-cta lang-active" data-lang="nl" style="display: flex;">Neem contact op</a>
+  <a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_6.html#contact" class="nav-cta" data-lang="en" style="display: none;">Get in touch</a>
 </nav>
 
 <!-- HERO -->
@@ -976,10 +1025,10 @@
     <h1 class="hero-title">SNDBOX</h1>
     <p class="hero-tagline">Because music is the answer.</p>
     <div class="hero-actions">
-      <a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_5.html#contact" class="btn-primary lang-active" data-lang="nl" style="display: flex;">Neem contact op</a>
-      <a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_5.html#contact" class="btn-primary" data-lang="en" style="display: none;">Get in touch</a>
-      <a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_5.html#about" class="btn-ghost lang-active" data-lang="nl" style="display: flex;">Meer over SNDBOX →</a>
-      <a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_5.html#about" class="btn-ghost" data-lang="en" style="display: none;">More about SNDBOX →</a>
+      <a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_6.html#contact" class="btn-primary lang-active" data-lang="nl" style="display: flex;">Neem contact op</a>
+      <a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_6.html#contact" class="btn-primary" data-lang="en" style="display: none;">Get in touch</a>
+      <a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_6.html#about" class="btn-ghost lang-active" data-lang="nl" style="display: flex;">Meer over SNDBOX →</a>
+      <a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_6.html#about" class="btn-ghost" data-lang="en" style="display: none;">More about SNDBOX →</a>
     </div>
   </div>
   <div class="hero-scroll">Scroll</div>
@@ -1318,7 +1367,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_5.html#home" class="footer-logo">SNDBOX</a>
+  <a href="file:///Users/k.vandezande/Downloads/SNDBOX___All-Round_DJ_6.html#home" class="footer-logo">SNDBOX</a>
   <span class="footer-copy">© 2025 SNDBOX. All rights reserved.</span>
   <div class="footer-social">
     <a href="https://www.instagram.com/DJ_SNDBOX" target="_blank">
@@ -1396,6 +1445,23 @@ function setLang(lang) {
 document.addEventListener('DOMContentLoaded', function() {
   const saved = localStorage.getItem('sndbox-lang') || 'nl';
   setLang(saved);
+
+  // Mobile hamburger menu
+  const navToggle = document.querySelector('.nav-toggle');
+  const navMenu = document.getElementById('nav-menu');
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', function() {
+      const isOpen = navMenu.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    // Sluit menu wanneer een link wordt aangeklikt
+    navMenu.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A') {
+        navMenu.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
 
   // Form submit handler: stuurt direct naar de inbox via FormSubmit (geen mailclient nodig)
   const form = document.getElementById('contact-form');
